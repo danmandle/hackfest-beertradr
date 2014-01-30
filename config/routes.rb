@@ -1,6 +1,4 @@
 Beertradr::Application.routes.draw do
-  devise_for :brewers
-
   resources :brews
 
 
