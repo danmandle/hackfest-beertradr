@@ -4,7 +4,12 @@
   <h1>Listing brews</h1>
 <% end %>
 
+<<<<<<< HEAD
 <table class="table table-striped table-hover">
+=======
+<div id="map"></div>
+
+<table>
   <tr>
     <th>Name</th>
     <th>Description</th>
@@ -12,6 +17,10 @@
     <th>IBU</th>
     <th>ABV</th>
     <th>Tags</th>
+    <th>Zip</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @brews.each do |brew| %>
@@ -22,6 +31,11 @@
     <td><%= brew.ibu %></td>
     <td><%= brew.abv %></td>
     <td><%= brew.tag_list %></td>
+    <td><%= brew.brewer_id %></td>
+    <td><%= brew.brewer.zip %></td>
+    <td><%= link_to 'Show', brew %></td>
+    <td><%= link_to 'Edit', edit_brew_path(brew) %></td>
+    <td><%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
@@ -29,3 +43,68 @@
 <br />
 
 <%= link_to 'New Brew', new_brew_path %>
+
+<script>
+$(function(){
+
+  function convert(tsv){
+
+    var lines=tsv.split("\n");
+
+    var result = [];
+
+    var headers=lines[0].split("\t");
+
+    for(var i=1;i<lines.length-1;i++){
+
+      var obj = {};
+      var currentline=lines[i].split("\t");
+
+      for(var j=0;j<headers.length;j++){
+	obj[headers[j]] = currentline[j];
+      }
+
+      result.push(obj);
+
+    }
+
+    return result;
+  }
+
+  function getLocation()
+    {
+    if (navigator.geolocation)
+      {
+      navigator.geolocation.getCurrentPosition(showPosition);
+      }
+    else{x.innerHTML="Geolocation is not supported by this browser.";}
+    }
+  function showPosition(position)
+    {
+    x.innerHTML="Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+    }
+
+
+  var map = L.map('map').setView([40.009594, -105.253912], 13);
+
+  L.tileLayer('http://{s}.tile.cloudmade.com/8ee2a50541944fb9bcedded5165f09d9/997/256/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+      maxZoom: 18
+  }).addTo(map);
+
+  var marker = L.marker([51.5, -0.09]).addTo(map);
+
+  var zips = <%= @brews.map{ |brew| brew.brewer.zip } %>;
+
+  $.each(zips, function(key, value){
+    var marker = L.marker([51.5, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup. <br> Easily customizable.');
+  });
+
+  <%= @brew.each do |brew| %>
+    var marker = L.marker([<%= brew.lat %>, <%= brew.long %>]).addTo(map).bindPopup("#{brew.description}");
+  <% end %>
+
+});
+
+</script>
