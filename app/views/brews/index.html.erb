@@ -9,9 +9,9 @@
     <th>Name</th>
     <th>Description</th>
     <th>Brewer</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>IBU</th>
+    <th>ABV</th>
+    <th>Tags</th>
   </tr>
 
 <% @brews.each do |brew| %>
@@ -19,9 +19,9 @@
     <td><%= brew.name %></td>
     <td><%= brew.description %></td>
     <td><%= brew.brewer.name %></td>
-    <td><%= link_to 'Show', brew %></td>
-    <td><%= link_to 'Edit', edit_brew_path(brew) %></td>
-    <td><%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= brew.ibu %></td>
+    <td><%= brew.abv %></td>
+    <td><%= brew.tag_list %></td>
   </tr>
 <% end %>
 </table>
