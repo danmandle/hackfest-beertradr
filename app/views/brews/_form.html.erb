@@ -1,4 +1,4 @@
-<%= form_for(@brew) do |f| %>
+<%= form_for(@brew, html: {:class => 'form-horizontal'}) do |f| %>
   <% if @brew.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@brew.errors.count, "error") %> prohibited this brew from being saved:</h2>
@@ -12,24 +12,34 @@
   <% end %>
 
   <div class="field form-group">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :class => 'form-control' %>
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
   </div>
   <div class="field form-group">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :class => 'form-control', :rows => 3 %>
+    <%= f.label :description, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, :class => 'form-control', :rows => 3 %>
+    </div>
   </div>
   <div class="field form-group">
-    <%= f.label :ibu %><br />
-    <%= f.text_field :ibu, :class => 'form-control' %>
+    <%= f.label :ibu, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :ibu, :class => 'form-control' %>
+    </div>
   </div>
   <div class="field form-group">
-    <%= f.label :abv %><br />
-    <%= f.text_field :abv, :class => 'form-control' %>
+    <%= f.label :abv, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :abv, :class => 'form-control' %>
+    </div>
   </div>
   <div class="field form-group hidden">
-    <%= f.label :brewer_id %><br />
-    <%= f.hidden_field :brewer_id, :value => current_user.id, :class => 'form-control' %>
+    <%= f.label :brewer_id, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.hidden_field :brewer_id, :value => current_user.id, :class => 'form-control' %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit :class =>  'btn btn-default'%>
