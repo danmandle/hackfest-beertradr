@@ -1,6 +1,6 @@
 <h1>Listing brews</h1>
 
-<table>
+<table class="table table-striped table-hover">
   <tr>
     <th>Name</th>
     <th>Description</th>
@@ -14,7 +14,7 @@
   <tr>
     <td><%= brew.name %></td>
     <td><%= brew.description %></td>
-    <td><%= brew.brewer_id %></td>
+    <td><%= brew.brewer.name %></td>
     <td><%= link_to 'Show', brew %></td>
     <td><%= link_to 'Edit', edit_brew_path(brew) %></td>
     <td><%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %></td>
