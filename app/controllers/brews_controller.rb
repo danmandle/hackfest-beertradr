@@ -3,6 +3,7 @@ class BrewsController < ApplicationController
   # GET /brews.json
   def index
     @brews = Brew.all
+    @brews = Brew.tagged_with(params[:tag]) if params[:tag]
 
     respond_to do |format|
       format.html # index.html.erb
