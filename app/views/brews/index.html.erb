@@ -4,11 +4,9 @@
   <h1>Listing brews</h1>
 <% end %>
 
-<<<<<<< HEAD
 <table class="table table-striped table-hover">
-=======
 <div id="map"></div>
-
+<!--
 <table>
   <tr>
     <th>Name</th>
@@ -38,7 +36,7 @@
     <td><%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
-</table>
+</table> -->
 
 <br />
 
@@ -93,7 +91,7 @@ $(function(){
       maxZoom: 18
   }).addTo(map);
 
-  var marker = L.marker([51.5, -0.09]).addTo(map);
+  var marker = L.marker([40.009594, -105.253912]).addTo(map);
 
   var zips = <%= @brews.map{ |brew| brew.brewer.zip } %>;
 
@@ -101,7 +99,7 @@ $(function(){
     var marker = L.marker([51.5, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup. <br> Easily customizable.');
   });
 
-  <%= @brew.each do |brew| %>
+  <%= @brews.each do |brew| %>
     var marker = L.marker([<%= brew.lat %>, <%= brew.long %>]).addTo(map).bindPopup("#{brew.description}");
   <% end %>
 
