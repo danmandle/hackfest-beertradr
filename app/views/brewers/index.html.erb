@@ -4,18 +4,12 @@
   <tr>
     <th>Name</th>
     <th>Zip</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @brewers.each do |brewer| %>
   <tr>
     <td><%= brewer.name %></td>
     <td><%= brewer.zip %></td>
-    <td><%= link_to 'Show', brewer %></td>
-    <td><%= link_to 'Edit', edit_brewer_path(brewer) %></td>
-    <td><%= link_to 'Destroy', brewer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
