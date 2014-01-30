@@ -44,6 +44,7 @@ class BrewersController < ApplicationController
 
     respond_to do |format|
       if @brewer.save
+        session[:brewer_id] = @brewer.id
         format.html { redirect_to @brewer, notice: 'Brewer was successfully created.' }
         format.json { render json: @brewer, status: :created, location: @brewer }
       else

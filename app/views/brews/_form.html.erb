@@ -20,8 +20,16 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :ibu %><br />
+    <%= f.text_field :ibu %>
+  </div>
+  <div class="field">
+    <%= f.label :abv %><br />
+    <%= f.text_field :abv %>
+  </div>
+  <div class="field">
     <%= f.label :brewer_id %><br />
-    <%= f.number_field :brewer_id %>
+    <%= f.hidden_field :brewer_id, :value => current_user.id %>
   </div>
   <div class="actions">
     <%= f.submit %>
