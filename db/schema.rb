@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140130024357) do
+ActiveRecord::Schema.define(:version => 20140130030428) do
 
   create_table "brewers", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20140130024357) do
     t.integer  "brewer_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.float    "ibu"
+    t.float    "abv"
   end
 
 end

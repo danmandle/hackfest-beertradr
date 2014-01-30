@@ -12,9 +12,18 @@
 
 <p>
   <b>Brewer:</b>
-  <%= @brew.brewer_id %>
+  <%= Brewer.find(@brew.brewer_id).name %>
 </p>
 
+<p>
+  <b>IBU:</b>
+  <%= @brew.ibu %>
+</p>
+
+<p>
+  <b>ABV:</b>
+  <%= @brew.abv %>
+</p>
 
 <%= link_to 'Edit', edit_brew_path(@brew) %> |
 <%= link_to 'Back', brews_path %>
