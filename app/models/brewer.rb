@@ -4,4 +4,5 @@ class Brewer < ActiveRecord::Base
   attr_accessible :name, :zip
   has_many :brews
 
+  acts_as_taggable
 end

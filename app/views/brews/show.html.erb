@@ -25,5 +25,10 @@
   <%= @brew.abv %>
 </p>
 
+<p>
+  <b>Tags:</b>
+  <%= @brew.tag_list %>
+</p>
+
 <%= link_to 'Edit', edit_brew_path(@brew) %> |
 <%= link_to 'Back', brews_path %>

@@ -27,7 +27,11 @@
     <%= f.label :abv %><br />
     <%= f.text_field :abv, :class => 'form-control' %>
   </div>
-  <div class="field form-group hidden">
+  <div class="field">
+    <%= f.label :tag_list %><br/>
+    <%= f.text_field :tag_list %>
+  </div>
+  <div class="field">
     <%= f.label :brewer_id %><br />
     <%= f.hidden_field :brewer_id, :value => current_user.id, :class => 'form-control' %>
   </div>
