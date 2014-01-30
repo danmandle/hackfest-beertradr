@@ -994,3 +994,27 @@ ActionController::RoutingError (No route matches [GET] "/fonts/glyphicons-halfli
 
 
   Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/brewers/new" for 127.0.0.1 at 2014-01-29 20:10:07 -0700
+Processing by BrewersController#new as HTML
+  Rendered brewers/_form.html.erb (3.4ms)
+  Rendered brewers/new.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 187ms
+
+ActionView::Template::Error (couldn't find file 'custom'
+  (in /Users/brianshaffer/Sites/beertradr/hackfest-beertradr/app/assets/stylesheets/application.css:15)):
+    2: <html>
+    3: <head>
+    4:   <title>Beertradr</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__3871990653542513267_70115297164920'
+  app/controllers/brewers_controller.rb:29:in `new'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (43.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (53.2ms)
